@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title><%= @titulo ||= "Empresa ROR - su única opción" %></title>
+  <link rel="icon" href="images/favicon.gif" type="image/x-icon"/>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.js"></script>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <script language="javascript">
+    $(document).ready(
+      function() {
+        $("#pikame").PikaChoose();
+      });
+  </script>
+</head>
+<body>
+  <!-- Contenedor -->
+  <div id="container">
+    <!-- Cabecera -->
+    <header>
+      <!-- Logo -->
+      <%= link_to (image_tag "rails.png", :size => "100x100", :alt => "logo"), {:action=>"index"}, :id=>"logo" %>
+      <!-- Fin logo -->
+      <!-- Menú de Navegación -->
+      <nav>
+        <ul>
+          <li><%= link_to "Inicio" %></li>
+          <li><%= link_to "¿Quiénes Somos?" %></li>
+          <li><%= link_to "Servicios" %></li>
+          <li><%= link_to "Localización" %></li>
+          <li><%= link_to "Contacto" %></li>
+        </ul>
+      </nav>
+      <!-- Final menú -->
+    </header>
+    <!-- Final cabecera -->
+    <!-- Intro -->
+    <div id="intro">
+      <div class="group_banner_right">
+        <%= image_tag "picture.png", :size => "550x316", :alt => "banner" %>
+      </div>
+      <header class="group_banner_left">
+        <hgroup>
+          <h1>Empresa ROR</h1>
+          <h2>"No más HorRORes"</h2>
+        </hgroup>
+      </header>
+    </div>
+    <!-- Fin Intro -->
+    <!-- Empieza contenido dinámico --> 
+    <div class="holder_content1">
+      <section class="group6">
+        <%= yield %>
+      </section>
+    </div>
+    <!-- Final del contenido dinámico -->
+  </div>
+</body>
+</html>
