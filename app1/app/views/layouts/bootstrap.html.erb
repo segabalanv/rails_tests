@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <title><%= @titulo ||= "Empresa ROR" %></title>
+    <link rel="icon" href="images/favicon.gif" type="image/x-icon"/>
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+  </head>
+  <body>
+    <!-- Contenedor -->
+    <div class="container">
+      <!-- Cabecera -->
+      <div class="row">
+        <!-- Logotipo -->
+        <div class="span1"><%= link_to image_tag("rails.png", :size => "200x200"), {:action => "index"} %></div>
+        <!-- Fin Logotipo -->
+        <div class="span7 offset2">
+          <!-- Menú de navegación -->
+          <ul class="nav nav-pills">
+            <li class="active"><%= link_to "Inicio", :action => "index" %></li>
+            <li><%= link_to "¿Quiénes Somos?", :action => "quienes_somos" %></li>
+            <li><%= link_to "Servicios", :action => "servicios" %></li>
+            <li><%= link_to "Contacto", :action => "contacto" %></li>
+            <li><%= link_to "Localización", :action => "localizacion" %></li>
+          </ul>
+          <!-- Fin menú de navegación -->
+        </div>
+      </div>
+      <!-- Fin Cabecera -->
+      <!-- Intro -->
+      <div class="row hero-unit espacio">
+        <div class="span4">
+          <h3>Empresa ROR</h3>
+          <p>"No más HorRORes"</p>
+          <p></p>
+          <%= button_to "Entrar", {:action => "index"}, :class => "btn btn-large btn-primary" %>
+        </div>
+        <div class="span6">
+          <%= image_tag "picture.png", :size => "500x500" %>
+        </div>
+      </div>
+        <!-- Fin Intro -->
+      <div class="row">
+        <!-- Servicios Destacados -->
+        <div class="span4">
+          <h2>¿Quiénes Somos?</h2>
+          <p>En esta sección puede tratar de encontrar quienes somos, aunque
+          en realidad difícilmente se enterará. Verá, la identidad de una persona
+          es un concepto subjetivo y arbitrario, en donde se intenta reducir la
+          totalidad de lo que constituye un ser humano particular a unas cuantas
+          palabras usadas en un nombre, o en un número de identificación ciudadana
+          o de afiliación a un servicio de salud. Igual, no es interesante saber
+          nuestras identidades</p>
+        </div>
+        <div class="span4">
+          <h2>Servicios</h2>
+          <p>En esta sección averiguará cuales son los servicios que ofrecemos.
+          ¿Cuáles podrán ser? ¿Seremos una empresa de outsourcing?
+          ¿Desarrolladores de aplicaciones web y móviles? ¿Un grupo de hackers 
+          violentos? ¿Unos estafadores poniendo una página web como fachada?
+          Nosotros también nos hacemos preguntas, pero tranquilo, tenga la
+          seguradad de que nosotros con certeza nos miraremos confusos al oir la 
+          pregunta: ¿Qué servicios ofrecen?</p>
+        </div>
+        <div class="span4">
+          <h2>Contacto</h2>
+          <p>En esta sección sabrá como contactarnos. La verdad pensabamos
+          implementar alguna experiencia interactiva que involucrara alguna forma
+          de realidad virtual en donde se podría realizar una conversación cara
+          a cara con total inmersión, pero bueno eso es muy caro, muy difícil y 
+          francamente no creemos poder hacerlo así que nos conformamos con un
+          sistema de envio de correos bastante deficiente.</p>
+        </div>
+        <!-- Fin servicios destacados -->
+      </div>
+      <div class="row">
+        <input type="text" data-provide="typeahead" data-source=["hola","adios"]>
+      </div>
+    </div>
+    <!-- Fin de contenedor -->
+  </body>
+</html>

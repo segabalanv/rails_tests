@@ -1,6 +1,6 @@
 # encoding: utf-8
 class HomeController < ApplicationController
-  layout "application", :only => "index"
+  layout "bootstrap", :only => "index"
   def index
     @titulo = "Empresa ROR - Inicio"
   end
