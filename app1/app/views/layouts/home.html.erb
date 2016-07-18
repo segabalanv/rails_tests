@@ -1,61 +1,67 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title><%= @titulo ||= "Empresa ROR - su única opción" %></title>
-  <link rel="icon" href="images/favicon.gif" type="image/x-icon"/>
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.js"></script>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-  <script language="javascript">
-    $(document).ready(
-      function() {
-        $("#pikame").PikaChoose();
-      });
-  </script>
-</head>
-<body>
-  <!-- Contenedor -->
-  <div id="container">
-    <!-- Cabecera -->
-    <header>
-      <!-- Logo -->
-      <%= link_to (image_tag "rails.png", :size => "100x100", :alt => "logo"), {:action=>"index"}, :id=>"logo" %>
-      <!-- Fin logo -->
-      <!-- Menú de Navegación -->
-      <nav>
-        <ul>
-          <li><%= link_to "Inicio" %></li>
-          <li><%= link_to "¿Quiénes Somos?" %></li>
-          <li><%= link_to "Servicios" %></li>
-          <li><%= link_to "Localización" %></li>
-          <li><%= link_to "Contacto" %></li>
-        </ul>
-      </nav>
-      <!-- Final menú -->
-    </header>
-    <!-- Final cabecera -->
-    <!-- Intro -->
-    <div id="intro">
-      <div class="group_banner_right">
-        <%= image_tag "picture.png", :size => "550x316", :alt => "banner" %>
+<!DOCTYPE HTML>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <title><%= @titulo ||= "Empresa ROR" %></title>
+    <link rel="icon" href="images/favicon.gif" type="image/x-icon"/>
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+  </head>
+  <body>
+    <!-- Contenedor -->
+    <div class="container">
+      <!-- Cabecera -->
+      <div class="row">
+        <!-- Logotipo -->
+        <div class="span1"><%= link_to image_tag("rails.png", :size => "200x200"), {:action => "index"} %></div>
+        <!-- Fin Logotipo -->
+        <div class="span7 offset2">
+          <!-- Menú de navegación -->
+          <ul class="nav nav-pills">
+            <li class="active"><%= link_to "Inicio", :action => "index" %></li>
+            <li><%= link_to "¿Quiénes Somos?", :action => "quienes_somos" %></li>
+            <li><%= link_to "Servicios", :action => "servicios" %></li>
+            <li><%= link_to "Contacto", :action => "contacto" %></li>
+            <li><%= link_to "Localización", :action => "localizacion" %></li>
+          </ul>
+          <!-- Fin menú de navegación -->
+        </div>
       </div>
-      <header class="group_banner_left">
-        <hgroup>
-          <h1>Empresa ROR</h1>
-          <h2>"No más HorRORes"</h2>
-        </hgroup>
-      </header>
-    </div>
-    <!-- Fin Intro -->
-    <!-- Empieza contenido dinámico --> 
-    <div class="holder_content1">
-      <section class="group6">
+      <!-- Fin Cabecera -->
+      <!-- Intro -->
+      <div class="row hero-unit espacio">
+        <div class="span4">
+          <h3>Empresa ROR</h3>
+          <p>"No más HorRORes"</p>
+          <p></p>
+          <%= button_to "Entrar", {:action => "index"}, :class => "btn btn-large btn-primary" %>
+        </div>
+        <div class="span6">
+          <%= image_tag "picture.png", :size => "500x500" %>
+        </div>
+      </div>
+        <!-- Fin Intro -->
+    <% if flash[:noticia] %>
+      <div class="row">
+        <div class="span10 offset2 alert alert-success">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <%= flash[:noticia] %>
+        </div>
+      </div>
+    <% end %>
+    <% if flash[:error] %>
+      <div class="row">
+        <div class="span10 offset2 alert alert-error">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <%= flash[:error] %>
+        </div>
+      </div>
+    <% end %>
+      
+      <div class="row">
         <%= yield %>
-      </section>
+      </div>
     </div>
-    <!-- Final del contenido dinámico -->
-  </div>
-</body>
+    <!-- Fin de contenedor -->
+  </body>
 </html>

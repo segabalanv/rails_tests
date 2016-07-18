@@ -1,3 +1,4 @@
+# encoding: utf-8
 App1::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
@@ -13,8 +14,8 @@ App1::Application.configure do
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 
-  # Don't care if the mailer can't send
-  config.action_mailer.raise_delivery_errors = false
+  # Show mailer exceptions
+  config.action_mailer.raise_delivery_errors = true
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
@@ -34,4 +35,16 @@ App1::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  
+  # Configuración de correo electrónico
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address => "smtp.gmail.com",
+    :port => 587,
+    :domain => "gmail.com",
+    :user_name => "laoficinadivertida@gmail.com",
+    :password => "ladiversionyelporno1",
+    :authentication => "plain",
+    :enable_starttls_auto => true
+  }
 end

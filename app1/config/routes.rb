@@ -2,6 +2,7 @@ App1::Application.routes.draw do
   get "home/index"
 
   get "home/contacto"
+  post "home/contacto"
 
   get "home/localizacion"
 

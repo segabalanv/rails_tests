@@ -6,7 +6,17 @@ class HomeController < ApplicationController
   end
 
   def contacto
-    @titulo = "Empresa ROR - Contacto"
+    @titulo = "Formulario de Contacto"
+    if request.post?
+      # Enviar el correo electrónico
+      begin
+        if Email.micorreo(params).deliver and Email.enviar(params).deliver
+          flash.now[:noticia] = "Se ha enviado correctamente"
+        end
+      rescue
+        flash.now[:error] = "Ha ocurrido un error. Por favor contacte al administrador"
+      end
+    end
   end
 
   def localizacion
